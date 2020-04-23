@@ -39,8 +39,8 @@ static const char devname[] = "garden-cam";         // name of your camera for m
 #define BlinkWithWrite 0
 
 // EDIT ssid and password
-const char ssid[] = "$IOT_WIFI_SSID";           // your wireless network name (SSID)
-const char password[] = "$IOT_WIFI_PASSWORD";  // your Wi-Fi network password
+const char ssid[] = "IOT_WIFI_SSID";           // your wireless network name (SSID)
+const char password[] = "IOT_WIFI_PASSWORD";  // your Wi-Fi network password
 
 // startup defaults for first recording
 
@@ -380,9 +380,11 @@ void setup() {
 
   startCameraServer();
 
-  // zzz username and password for ftp server
+  //username and password for ftp server
 
-  ftpSrv.begin("esp", "esp");
+  char ftpuser[] = "esp";
+  char ftppass[] = "esp";
+  ftpSrv.begin(ftpuser, ftppass);
 
   Serial.printf("Total space: %lluMB\n", SD_MMC.totalBytes() / (1024 * 1024));
   Serial.printf("Used space: %lluMB\n", SD_MMC.usedBytes() / (1024 * 1024));
